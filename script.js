@@ -1,5 +1,5 @@
 function BlacklistAccess() {
-  const currentDate = new Date(),
+  const currentDate = new Date();
   const blacklistArray = JSON.parse(localStorage.getItem('Blacklist') || '[]')
   currentDate.setHours(currentDate.getHours() + 1)
   const blacklistEntry = {
