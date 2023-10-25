@@ -47,12 +47,15 @@ function showProtectionLog() {
 }
 
 function showAlert() {
-  alert('애드센스 무효 클릭 공격 감지되었습니다.\\n IP를 수집합니다.');
+  alert('애드센스 무효 클릭 공격이 감지되었습니다.\\n IP를 수집합니다.');
   window.location.replace('https://www.tistory.com/');
 }
 
 window.addEventListener('blur', () => {
-  if(document.activeElement && 'src' in document.activeElement && document.activeElement.src.includes('googleads')) {
+  if(document.activeElement && 
+    'src' in document.activeElement && 
+    (document.activeElement.src.includes('googleads') || 
+    document.activeElement.src.includes('pagead2'))) {
     addClickCount();
     setTimeout(() => {
       document.activeElement.blur();
