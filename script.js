@@ -14,7 +14,7 @@ function BlacklistAccess() {
 function addClickCount() {
   let clickCount = parseInt(localStorage.getItem('ProtectionClickCount') || '0') + 1;
   console.log("Current click count:", clickCount);
-  clickCount > 3 && (BlacklistAccess(), (clickCount = 0));
+  clickCount > 5 && (BlacklistAccess(), (clickCount = 0));
   localStorage.setItem('ProtectionClickCount', clickCount.toString());
 }
 
