@@ -53,17 +53,14 @@ function showAlert() {
 }
 
 window.addEventListener('blur', () => {
-  if(document.activeElement && 
-    'src' in document.activeElement && 
-    (document.activeElement.src.includes('googleads') || 
-    document.activeElement.src.includes('pagead2'))) {
-    addClickCount();
+  document.activeElement &&
+    document.activeElement.src.includes('googleads') &&
+    (addClickCount(),
     setTimeout(() => {
-      document.activeElement.blur();
-    }, 1000);
-  }
-});
+      document.activeElement.blur()
+    }, 1000))
+})
 
 window.addEventListener('DOMContentLoaded', () => {
   checkBlacklist();
-});
+})
