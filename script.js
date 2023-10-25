@@ -1,4 +1,4 @@
-function BlacklistAccess() {
+	function BlacklistAccess() {
   const currentDate = new Date();
   const blacklistArray = JSON.parse(localStorage.getItem('Blacklist') || '[]');
   currentDate.setHours(currentDate.getHours() + 1);
@@ -12,9 +12,19 @@ function BlacklistAccess() {
 }
 
 function addClickCount() {
-  let clickCount = parseInt(localStorage.getItem('ProtectionClickCount') || '0') + 1;
+  let clickCount = parseInt(localStorage.getItem('ProtectionClickCount') || '0');
+    const lastClickTime = new Date(localStorage.getItem('LastClickTime') || 0);
+    const now = new Date();
+
+    // 1분 지나면 클릭수 초기화
+    if (now - lastClickTime > 1 * 60 * 1000) {
+        clickCount = 0;
+    }
+
+    clickCount += 1;
+    localStorage.setItem('LastClickTime', now.toString());
   console.log("Current click count:", clickCount);
-  clickCount > 5 && (BlacklistAccess(), (clickCount = 0));
+  clickCount > 10 && (BlacklistAccess(), (clickCount = 0)); // 클릭수 제한
   localStorage.setItem('ProtectionClickCount', clickCount.toString());
 }
 
