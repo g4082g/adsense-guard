@@ -44,11 +44,11 @@ function checkBlacklist() {
 }
 
 function showProtectionLog() {
-  console.log('애드센스 무효 트래픽 감시 중\\n무효 광고 클릭을 차단합니다.');
+  console.log('애드센스 무효 트래픽 감시 중\n무효 광고 클릭을 차단합니다.');
 }
 
 function showAlert() {
-  alert('애드센스 무효 클릭 공격이 감지되었습니다.\\n IP는 사이트 소유자에게 기록됩니다.\\n 무효 광고 클릭 반복 시 법적 책임을 질 수 있습니다.');
+  alert('애드센스 무효 클릭 공격이 감지되었습니다.\nIP는 사이트 소유자에게 기록됩니다.\n무효 광고 클릭 반복 시 법적 책임을 질 수 있습니다.');
   window.location.replace('https://www.tistory.com/');
 }
 
